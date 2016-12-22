@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oguzhan Ergin</title>
+    <link>http://oguzhane.github.io/index.xml</link>
+    <description>Recent content on Oguzhan Ergin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Dec 2016 13:20:14 +0300</lastBuildDate>
+    <atom:link href="http://oguzhane.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>hello</title>
+      <link>http://oguzhane.github.io/blog/hello/</link>
+      <pubDate>Fri, 16 Dec 2016 13:20:14 +0300</pubDate>
+      
+      <guid>http://oguzhane.github.io/blog/hello/</guid>
+      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor quam lectus, vitae ultrices neque feugiat vel. Vivamus sit amet purus augue. Mauris tristique malesuada mauris, vel dapibus erat ullamcorper a. Fusce tincidunt, nulla ac dapibus tincidunt, lorem diam convallis arcu, ultrices rhoncus risus metus et nunc. Sed pellentesque venenatis lorem, ac cursus libero dictum at. Pellentesque dapibus ultricies nisl, id tincidunt libero convallis eget. Nunc et odio rhoncus, dictum lacus a, pretium est. Etiam luctus sed quam et molestie. Vivamus imperdiet urna sed mauris dictum hendrerit. Mauris vel ante nec odio cursus aliquet blandit vitae ante. Vestibulum sit amet arcu dui. Nulla dui leo, consectetur in consequat eget, hendrerit eget justo. In ut bibendum est. Mauris mauris metus, pretium in mi quis, dictum mollis mi. Nullam rutrum sem ut odio pharetra, eget pulvinar lectus scelerisque.&lt;/p&gt;
+
+&lt;p&gt;Mauris ac pulvinar eros, et feugiat metus. Donec finibus, lectus a luctus scelerisque, massa metus tristique orci, vitae fringilla metus purus eget massa. Suspendisse potenti. Nullam neque nulla, aliquam et odio sit amet, consectetur sagittis libero. Nulla ullamcorper imperdiet augue sed tincidunt. Nunc tincidunt urna nec urna fermentum aliquam. In et dictum diam. Maecenas sagittis et dolor a posuere. Curabitur id lacus nulla. Duis luctus, metus quis pulvinar pharetra, magna tellus porttitor nisl, non rhoncus urna mauris quis felis. Pellentesque pharetra facilisis pellentesque. Sed auctor hendrerit lacus quis condimentum.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
