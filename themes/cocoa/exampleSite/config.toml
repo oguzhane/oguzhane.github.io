@@ -1,0 +1,37 @@
+baseurl = "https://you.github.io/" 
+builddrafts = false
+canonifyurls = true
+contentdir = "content"
+languageCode = "en-US"
+layoutdir = "layouts"
+publishdir = "public"
+author = "Arthur Dent"
+title = "Arthur Dent"
+pygmentsuseclasses = true
+disqusshortname = "cocoaexamplesite" # Comment out to disable Disqus.
+pluralizelisttitles = false
+
+[permalinks]
+fixed = ":title/"
+blog = "blog/:slug/"
+
+[params]
+author = "Arthur Dent"
+# gravatar = "" # do not use in the same time as Avatar
+# avatar = "" # path to image in static dir e.g img/avatar.png (do not use in the same time as Gravatar)
+# cachebuster = false # FIXME: See issue #32.
+dateform = "Jan 2, 2006"
+dateformfull = "Mon Jan 2 2006 15:04:05 MST"
+description = "Don't panic"
+email = "you@example.space"
+faviconfile = "img/leaf.ico"
+gatracker = "XYZ"
+github = "//github.com/you"
+highlightjs = true
+# highlightjslanguages = ["go"] # additional languages not included in the "common" set
+initials = "ad" # Displayed on single post page; DEPRECATED in v0.3.0.
+lang = "en"
+linkedin = "//linkedin.com/in/you"
+twitter = "//twitter.com/you"
+
+extracssfiles = [ "/css/override.css" ] # In your `static/css`, add/remove files as necessary.
