@@ -9,6 +9,7 @@ author = "Oguzhan Ergin"
 title = "Oguzhan Ergin"
 pygmentsuseclasses = true
 theme = "cocoa"
+pluralizelisttitles = false
 
 [permalinks]
 fixed = ":title/"
