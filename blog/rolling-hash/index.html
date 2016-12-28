@@ -14,10 +14,10 @@
 <title>
 
 
-     hello 
+     Rolling Hash 
 
 </title>
-<link rel="canonical" href="http://oguzhane.github.io/blog/hello/">
+<link rel="canonical" href="http://oguzhane.github.io/blog/rolling-hash/">
 
 
 <script type="text/javascript">
@@ -112,21 +112,61 @@
                 <div class="title-container">
                     <div class="page-heading">
 
-    hello
+    Rolling Hash
 
 </div>
 
                     <div class="initials"><a href="http://oguzhane.github.io/"></a></div>
                 </div>
                 <div class="meta">
-                    <div class="date" title="Fri Dec 16 2016 13:20:14 MSK">Dec 16, 2016</div>
+                    <div class="date" title="Wed Dec 28 2016 23:32:14 MSK">Dec 28, 2016</div>
                     <div class="reading-time"><div class="middot"></div>2 minutes read</div>
                 </div>
             </div>
             <div class="markdown">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor quam lectus, vitae ultrices neque feugiat vel. Vivamus sit amet purus augue. Mauris tristique malesuada mauris, vel dapibus erat ullamcorper a. Fusce tincidunt, nulla ac dapibus tincidunt, lorem diam convallis arcu, ultrices rhoncus risus metus et nunc. Sed pellentesque venenatis lorem, ac cursus libero dictum at. Pellentesque dapibus ultricies nisl, id tincidunt libero convallis eget. Nunc et odio rhoncus, dictum lacus a, pretium est. Etiam luctus sed quam et molestie. Vivamus imperdiet urna sed mauris dictum hendrerit. Mauris vel ante nec odio cursus aliquet blandit vitae ante. Vestibulum sit amet arcu dui. Nulla dui leo, consectetur in consequat eget, hendrerit eget justo. In ut bibendum est. Mauris mauris metus, pretium in mi quis, dictum mollis mi. Nullam rutrum sem ut odio pharetra, eget pulvinar lectus scelerisque.</p>
+                
 
-<p>Mauris ac pulvinar eros, et feugiat metus. Donec finibus, lectus a luctus scelerisque, massa metus tristique orci, vitae fringilla metus purus eget massa. Suspendisse potenti. Nullam neque nulla, aliquam et odio sit amet, consectetur sagittis libero. Nulla ullamcorper imperdiet augue sed tincidunt. Nunc tincidunt urna nec urna fermentum aliquam. In et dictum diam. Maecenas sagittis et dolor a posuere. Curabitur id lacus nulla. Duis luctus, metus quis pulvinar pharetra, magna tellus porttitor nisl, non rhoncus urna mauris quis felis. Pellentesque pharetra facilisis pellentesque. Sed auctor hendrerit lacus quis condimentum.</p>
+<p><code>Recursive hashing</code> veya <code>rolling checksum</code> olarak da bilinen <code>rolling hash</code> input olarak verilen stringin tümünü işleme tabii tutmadan hash degerini hesaplamaya olanak tanıyan bir hash fonksiyonudur. Bunun avantajını bir örnek üzerinden açıklayalım.</p>
+
+<hr />
+
+<p>Elimizde <code>X</code> ve <code>Y</code> değişkenleri olsun ve string degerleri tutsunlar. Promlemimiz şu şekilde:
+<code>X</code>in degeri <code>Y</code>nin degeri ile aynı mı?Karşılaştırın. Bunun için bize kesin cevabı veren maliyetli yöntemimiz şu şekilde: <code>Y</code> stringinin her bir karakterini <code>X</code> stringinin o indisteki karakteriyle karşılaştırmak. İşte bu yöntem maliyetli, çirkin bir yöntem. Olabildiğince bundan kaçınmamız gerek, bu aşamaya varmadan daha az maliyetli bir yöntemle <code>evet(aynı)</code> veya <code>hayır(farklı)</code> sonuçlarına ulaşabiliyorsak ulaşmamız gerek.
+Daha iyi anlamak için X ve Y değişkenleri şunun gibi olsun.
+<code>X=&quot;abc&quot;</code>
+<code>Y=&quot;bcd&quot;</code>
+değişkenlerin değerlerine bakarak; <code>hayır bcd stringi abc stringi ile aynı değil</code> diyebiliriz.</p>
+
+<hr />
+
+<p>Değişkenleri basit bir hash fonksiyonuna tabii tutalım.
+$H_1 = H(abc) = a*7^0 +  b*7^1 + c*7^2 = 97*1+98*7+99*49=5634$
+$H_1 = 5634$
+$H_2 = H(bcd) = b*7^0 +  c*7^1 + d*7^2 =98*1+99*7+100*49=5691$
+$H_2 = 5691$
+Üstte hash degerlerini hesapladık. Bunun için taban aritmetiğinden yararlandık. Basit olması açısından 7 tabanını göz önüne aldık. Sonra harflerin ascii degerlerini, soldan sağa doğru basamak ağırlıklarıyla çarpıp topladık.
+Hash degerlerini elde ettik. $5632 \neq 5931$ olduğu için bu değerler aynı değil.</p>
+
+<hr />
+
+<p>Bir süre sonra <code>X</code>in değerinin <code>X=&quot;bcd&quot;</code> olarak değiştiğini varsayalım. Tekrar karşılaştırma yapmamız gerek. Bunun için <code>X</code>in yeni değerinin tüm karakterlerini okuyarak, son hash değerini hesaplamamıza gerek yok. Bu daha kompleks fazla sayıda karakter içeren degerler icin ciddi bir maliyet demektir. Bunun yerine daha zekice bir yöntem kullanacağız.
+<code>X</code>in degerine baktığımızda baştaki <code>a</code> karakteri çıkartılmış ve sona <code>d</code> karakteri eklenmiş, O halde şu adımları uygulayalım;</p>
+
+<ul>
+<li>baştaki <code>a</code> karakterini kaldır. $(a*7^0+ b*7^1+c*7^2)  - a*7^0 $</li>
+<li>basamak ağırlıkları bir birim kaydığı için <code>7</code>ye böl. $(b*7^1+c*7^2)/7 =&gt; b*7^0 + c*7^1$</li>
+<li><code>d</code> karakterinden gelecek degeri göz önüne al. $b*7^0 + c*7^1 + d*7^2$</li>
+</ul>
+
+<p>Bu adımlar ile birlikte $H_1&rsquo; = 5691 $ olacağından dolayı
+$ H_1&rsquo; = H_2 $ olur. Bundan sonra hash fonksiyonumuz yeterli değilse, istersek,  maliyetli yöntem ile karşılaştırmaya devam edilebilir.</p>
+
+<h4 id="kaynak"><strong>Kaynak</strong></h4>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Rolling_hash">https://en.wikipedia.org/wiki/Rolling_hash</a></li>
+<li><a href="https://www.quora.com/What-is-a-rolling-hash-and-when-is-it-useful">https://www.quora.com/What-is-a-rolling-hash-and-when-is-it-useful</a></li>
+</ul>
 
                 <br>
                 <p><a href="http://oguzhane.github.io/blog/">Back to posts</a></p>
