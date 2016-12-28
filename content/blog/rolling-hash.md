@@ -9,7 +9,7 @@ title = "Rolling Hash"
 ----------
 
 
-Elimizde `X` ve `Y` değişkenleri olsun ve string degerleri tutsunlar. Promlemimiz şu şekilde:
+Elimizde `X` ve `Y` değişkenleri olsun ve string degerleri tutsunlar. Problemimiz şu şekilde:
 `X`in degeri `Y`nin degeri ile aynı mı?Karşılaştırın. Bunun için bize kesin cevabı veren maliyetli yöntemimiz şu şekilde: `Y` stringinin her bir karakterini `X` stringinin o indisteki karakteriyle karşılaştırmak. İşte bu yöntem maliyetli, çirkin bir yöntem. Olabildiğince bundan kaçınmamız gerek, bu aşamaya varmadan daha az maliyetli bir yöntemle `evet(aynı)` veya `hayır(farklı)` sonuçlarına ulaşabiliyorsak ulaşmamız gerek.
 Daha iyi anlamak için X ve Y değişkenleri şunun gibi olsun.
 `X="abc"`
